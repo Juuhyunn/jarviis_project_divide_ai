@@ -18,10 +18,10 @@ def process(request):
 
 @api_view(['GET', 'POST'])
 @parser_classes([JSONParser])
-def find(request, year, month, day):
+def find(request, user_id, year, month, day):
     print("********** find START **********")
     print(f'date : {year}-{month}-{day}')
-    diary = Diary.objects.filter(diary_date__year= year, diary_date__month=month, diary_date__day=day)
+    diary = Diary.objects.filter(user_id=user_id, diary_date__year= year, diary_date__month=month, diary_date__day=day)
     serializer = DiarySerializer(diary, many=True)
     print(serializer.data)
     return JsonResponse(data=serializer.data, safe=False)

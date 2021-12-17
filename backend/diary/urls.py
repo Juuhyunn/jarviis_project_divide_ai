@@ -7,6 +7,6 @@ from diary import views
 urlpatterns = [
     url(r'process', views.process),
     # url(r'upload', views.upload),
-    url(r'find/(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})$', views.find),
+    url(r'find/(?P<user_id>\w{0,500})/(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})$', views.find),
     url(r'modify', views.modify),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

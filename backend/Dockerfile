@@ -1,6 +1,6 @@
 FROM python:3.8
 
-WORKDIR /juu_jarviis
+WORKDIR /app
 
 # Install Dependencies of Miniconda
 RUN apt-get update --fix-missing && \
@@ -22,11 +22,13 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 COPY . .
 COPY requirements.txt requirements.txt
 
-CMD ["python", "manage.py", "runserver"]
 
 ENV TZ=Asia/Seoul
 
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
+RUN python -m pip install gunicorn
 
-EXPOSE 8000
+#CMD ["python", "manage.py", "runserver"]
+
+#EXPOSE 8000

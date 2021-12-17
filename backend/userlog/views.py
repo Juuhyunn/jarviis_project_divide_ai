@@ -103,7 +103,7 @@ def create(request):
                            y=new['y'],
                            log_date=new['log_date'] if new['log_date'] != "" else datetime.now(),
                            weather=new['weather'] if new['weather'] != "" else Weather().process(),
-                           log_type=new['log_type'],
+                           log_type=new['log_type'] if new['log_type'] != "" else "normal",
                            contents=new['contents'],
                            # item=new['item'],
                            user_id=new['user_id'])
